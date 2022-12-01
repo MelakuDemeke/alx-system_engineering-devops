@@ -1,4 +1,4 @@
-<img src="https://assets.imaginablefutures.com/media/images/ALX_Logo.max-200x150.png" alt="alx logo" style="width:200px;"/>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk_F7dhUypBOLhPSPeKQlCp7ZVdfXsfELaVZvuxeJc7WnHk1gx3IuqwdDbX1TrLl-YZ3Y&usqp=CAU" alt="alx logo"/>
 
 # Alx system engineer
 
