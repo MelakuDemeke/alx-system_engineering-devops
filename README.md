@@ -2,5 +2,5 @@
 
 # Alx system engineer
 
-- [0x00](./0x00-shell_basics) : Writing basic bash scripts that perform basic stuff.
-- [0x01](./0x01-shell_permissions) : Linux permissions.
+- [0x00-shell_basics](./0x00-shell_basics) : Writing Bash script
+- [0x01-shell_permissions](./0x01-shell_permissions) : Linux permissions.
