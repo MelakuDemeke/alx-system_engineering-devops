@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# fizzbuzz
+# display content of /etc/passwd
 
 # define file path
 file="/etc/passwd"
