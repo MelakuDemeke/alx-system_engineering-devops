@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# This script is displaying "Best School" 10 times
+
+count=1
+while [ $count -le 20 ]
+do
+  echo $((count))
+  if [ $count -eq 4 ]
+    then
+      echo "bad luck from China"
+  elif [ $count -eq 9 ]
+    then
+      echo "bad luck from Japan"
+  elif [ $count -eq 17 ]
+    then
+      echo "bad luck from Italy"
+  fi
+  count=$((count+1))
+done
