@@ -2,17 +2,21 @@
 # This script is displaying "Best School" 10 times
 
 count=1
-while [ $count -le 20 ]
+
+while [ "$count" -le 20 ]
 do
-  case $count in
+  case "$count" in
     4)
-      echo "$count bad luck from China"
+      echo "$count"
+      echo "bad luck from China"
       ;;
     9)
-      echo "$count bad luck from Japan"
+      echo "$count"
+      echo "bad luck from Japan"
       ;;
     17)
-      echo "$count bad luck from Italy"
+      echo "$count"
+      echo "bad luck from Italy"
       ;;
     *)
       echo "$count"
