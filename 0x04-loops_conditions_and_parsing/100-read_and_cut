@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# fizzbuzz
+
+# define file path
+file="/etc/passwd"
+# reading each line of the file
+while IFS= read -r line; do
+  # extract the fileds 1 ,3 and 6 separeted by colon  
+  echo "$line" | cut -d ':' -f1,3,6
+done < "$file"
