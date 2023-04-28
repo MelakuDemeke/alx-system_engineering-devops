@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
 # This script shows curently running process
 
-# Display header
-printf "%-8s %-8s %-10s %-6s %s\n" "USER" "PID" "%CPU" "%MEM" "COMMAND"
-
-# Show processes
-ps -eo user,pid,%cpu,%mem,cmd --sort=-%cpu | awk '{printf("%-8s %-8s %-10s %-6s %s\n", $1, $2, $3, $4, $5)}'
+ps -auxf
