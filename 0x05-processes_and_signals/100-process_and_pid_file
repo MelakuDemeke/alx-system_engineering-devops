@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# Process and PID file
+
+file="/var/run/myscript.pid"
+
+if [ ! -e "$file" ]; then
+  touch "$file"
+fi
+
+# Get the PID of the sleep command
+sleep 2 &
+pid=$!
+
+# Write the PID to the file
+echo "$pid" > "$file"
+
+# Cleanup function to remove the file and exit
+cleanup() {
+  echo "I hate the kill command"
+  rm "$file"
+  exit
+}
+
+# SIGTERM and SIGQUIT signals trigger cleanup
+trap cleanup SIGTERM SIGQUIT
+
+# SIGINT signal handler
+sigint_handler() {
+  echo "Y U no love me?!"
+}
+
+# SIGINT signal triggers sigint_handler
+trap sigint_handler SIGINT
+
+while true; do
+  echo "To infinity and beyond"
+  sleep 2
+done
