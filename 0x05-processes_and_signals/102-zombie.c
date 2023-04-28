@@ -1,48 +1,38 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "stdio.h"
+#include "stdlib.h"
+#include "unistd.h"
 
 /**
  * infinite_while - a function that runs forever and returns nothing
- * @void: no parameters
- *
- * This function runs an infinite loop that sleeps for 1 second in each iteration.
- */
-void infinite_while(void)
+ * Return: 0 in the end
+*/
+int infinite_while(void)
 {
 	while (1)
+	{
 		sleep(1);
+	}
+	return (0);
 }
 
 /**
- * main - the entry to a program that creates 5 zombie processes
- * @void: no parameters
- *
- * This program creates 5 child processes using fork() and prints their PIDs,
- * but doesn't wait for them to terminate, so they become zombie processes.
- * Then, it enters an infinite loop, waiting for signals or other events.
- *
- * Return: 0 on success
- */
+ * main - the entry to a program that creats 5 zombie process
+ * Return: 0 on sucess
+*/
 int main(void)
 {
-	int i;
+	int children_processes = 0;
+	pid_t pid;
 
-	for (i = 0; i < 5; i++)
+	while (children_processes < 5)
 	{
-		pid_t pid = fork();
-		if (pid == -1)
-		{
-			perror("fork");
-			exit(1);
-		}
-		if (pid == 0)
-			exit(0);
-		else
-			printf("Zombie process created, PID: %i\n", (int)pid);
+		pid = fork();
+		if (!pid)
+			break;
+		printf("Zombie process created, PID: %i\n", (int)pid);
+		children_processes++;
 	}
-
-	infinite_while();
-
+	if (pid != 0)
+		infinite_while();
 	return (0);
 }
