@@ -7,9 +7,12 @@ if [$# -lt 4]; then
     exit 1
 fi
 
-path_to_file=$1
+path="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+file=$1
 ip=$2
 username=$3
 path_to_ssh_key=$4
 
+scp -i "$path_to_ssh_key" -o StrictHostKeyChecking=no "$path"/"$file" "$username"@"$ip":/home/"$username"/
 
+exit 0
