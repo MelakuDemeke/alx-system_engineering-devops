@@ -2,17 +2,14 @@
 
 # Send a file to a server
 
-if [$# -lt 4]; then
-    echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
-    exit 1
-fi
-
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 file=$1
 ip=$2
 username=$3
 path_to_ssh_key=$4
 
-scp -i "$path_to_ssh_key" -o StrictHostKeyChecking=no "$path"/"$file" "$username"@"$ip":/home/"$username"/
-
-exit 0
+if [ $# -eq 4 ]; then
+    scp -i "$path_to_ssh_key" -o StrictHostKeyChecking=no "$path"/"$file" "$username"@"$ip":/home/"$username"/
+else
+    echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+fi
