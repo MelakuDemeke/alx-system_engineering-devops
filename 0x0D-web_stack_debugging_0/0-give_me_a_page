@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# debug the web stack and found that apache wast started
+service apache2 start
