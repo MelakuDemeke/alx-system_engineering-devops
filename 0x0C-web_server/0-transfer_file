@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-# Send a file to a server
+# Transfers a file from client to server
 
 if [ $# -lt 4 ]
 then
