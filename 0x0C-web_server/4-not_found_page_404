@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# configure ubunu server to instal nginx
+# then create forwarding 
+
+sudo apt-get update -y -qq && \
+	 sudo apt-get install nginx -y
+
+
+sudo service nginx start
+sudo ufw allow 'Nginx HTTP'
+
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+echo -e "Hello World!" > /var/www/html/index.nginx-debian.html
+
+# Setting up /redirect_me to a youtube video
+sudo sed -i '24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+
+sudo service nginx restart
