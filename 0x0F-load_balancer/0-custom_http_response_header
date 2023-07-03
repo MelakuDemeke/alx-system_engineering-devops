@@ -52,7 +52,7 @@ server_config=\
 			try_files \$uri \$uri/ =404;
 		}
 		if (\$request_filename ~ redirect_me){
-			rewrite ^ https://th3-gr00t.tk/ permanent;
+			rewrite ^ https://melakudemeke.tech/ permanent;
 		}
 		error_page 404 /error_404.html;
 		location = /error_404.html {
