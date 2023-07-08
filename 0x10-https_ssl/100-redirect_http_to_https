@@ -1,0 +1,18 @@
+defaults
+  mode http
+  timeout client 15s
+  timeout connect 10s
+  timeout server 15s
+  timeout http-request 10s
+
+frontend melakudemeke-tech-frontend
+    bind *:80
+    bind *:443 ssl crt /etc/haproxy/certs/melakudemeke.tech.pem
+    http-request redirect scheme https code 301 unless { ssl_fc }
+    http-request set-header X-Forwarded-Proto https
+    default_backend melakudemeke-tech-backend
+
+backend melakudemeke-tech-backend
+    balance roundrobin
+    server 3354-web-01 100.24.72.56:80 check
+    server 3354-web-02 54.86.50.67:80 check
