@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Check if the password argument is provided
+if [ $# -eq 0 ]; then
+    echo "Please provide the MySQL password as an argument."
+    exit 1
+fi
+
+# Get the current date in the desired format
+current_date=$(date +'%d-%m-%Y')
+
+# Define the backup file name
+backup_file="backup.sql"
+
+# Perform the MySQL dump
+mysqldump -u root -p"$1" --all-databases > "$backup_file"
+
+# Check if the MySQL dump was successful
+if [ $? -eq 0 ]; then
+    # Create the compressed archive
+    tar -czvf "$current_date.tar.gz" "$backup_file"
+
+    # Check if the compression was successful
+    if [ $? -eq 0 ]; then
+        echo "MySQL dump created and compressed successfully."
+    else
+        echo "Error compressing the MySQL dump."
+    fi
+
+    # Remove the temporary MySQL dump file
+    rm "$backup_file"
+else
+    echo "Error creating the MySQL dump."
+fi
