@@ -20,20 +20,14 @@ Example:
 import requests
 import sys
 
-
-#!/usr/bin/python3
-"""script using this REST API, for a given employee ID,
-returns information about his/her TODO list progress."""
-import requests
-import sys
-
 if __name__ == '__main__':
     base_url = 'https://jsonplaceholder.typicode.com/'
     user = requests.get(base_url + 'users/{}'.format(sys.argv[1])).json()
-    todos = requests.get(base_url + 'todos', params={'userId': sys.argv[1]}).json()
+    todos = requests.get(base_url + 'todos',
+                         params={'userId': sys.argv[1]}).json()
 
     completed_tasks = [title.get("title") for title in todos if
-                 title.get('completed') is True]
+                       title.get('completed') is True]
     print(completed_tasks)
     print("Employee {} is done with tasks({}/{}):".format(user.get("name"),
                                                           len(completed_tasks),
