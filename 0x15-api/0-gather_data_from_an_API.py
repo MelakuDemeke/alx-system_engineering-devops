@@ -21,34 +21,21 @@ import requests
 import sys
 
 
-def get_employee_todos(employee_id):
-    """
-    Retrieves the to-do list for the specified employee ID and
-    displays completed tasks.
+#!/usr/bin/python3
+"""script using this REST API, for a given employee ID,
+returns information about his/her TODO list progress."""
+import requests
+import sys
 
-    Parameters:
-        employee_id (int): The ID of the employee whose to-do list
-        you want to view.
-    """
-    base_url = "https://jsonplaceholder.typicode.com/"
-    user = requests.get(base_url + "users/{}".format(employee_id)).json()
-    todos = requests.get(base_url + "todos",
-                         params={"userId": employee_id}).json()
+if __name__ == '__main__':
+    base_url = 'https://jsonplaceholder.typicode.com/'
+    user = requests.get(base_url + 'users/{}'.format(sys.argv[1])).json()
+    todos = requests.get(base_url + 'todos', params={'userId': sys.argv[1]}).json()
 
-    completed_tasks = [todo.get("title")
-                       for todo in todos if todo.get("completed")]
-    total_tasks = len(todos)
-
-    print("Employee {} has completed {}/{} tasks:".format(user.get("name"),
-          len(completed_tasks), total_tasks))
-    for task in completed_tasks:
-        print("\t {}".format(task))
-
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python script_name.py employee_id")
-        sys.exit(1)
-
-    employee_id = int(sys.argv[1])
-    get_employee_todos(employee_id)
+    completed_tasks = [title.get("title") for title in todos if
+                 title.get('completed') is True]
+    print(completed_tasks)
+    print("Employee {} is done with tasks({}/{}):".format(user.get("name"),
+                                                          len(completed_tasks),
+                                                          len(todos)))
+    [print("\t {}".format(title)) for title in completed_tasks]
