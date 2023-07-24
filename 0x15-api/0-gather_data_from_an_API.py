@@ -10,7 +10,8 @@ Usage:
     python script_name.py employee_id
 
 Arguments:
-    employee_id (int): The ID of the employee whose to-do list you want to view.
+    employee_id (int): The ID of the employee whose to-do list
+    you want to view.
 
 Example:
     python script_name.py 3
