@@ -1,4 +1,6 @@
-# Incident Postmortem Report: School Management System Outage
+# Oops, We Tripped Up: The Great School Management System Outage of 2023 🚀
+
+![Oops!](https://img.freepik.com/premium-vector/pop-art-style-with-oops-sign-banner-design-vector-illustration_194782-922.jpg?w=826)
 
 **Issue Summary:**
 - **Duration:** August 3, 2023, 08:45 AM - August 3, 2023, 11:30 AM (UTC-5)
@@ -16,16 +18,17 @@
 - **Root Cause:** The incident was caused by a poorly optimized database schema update, resulting in inefficient queries, elevated CPU load, and reduced response times.
 - **Resolution:** The problematic database schema update was reverted to the previous version, mitigating the high CPU load and restoring normal system functioning. A comprehensive code review ensured similar issues were not present elsewhere.
 
-**Corrective and Preventative Measures:**
+*## **Corrective and Preventative Measures:**
 - **Improvements/Fixes:**
-  - Optimize database queries to enhance efficiency.
-  - Implement automated testing for database schema changes to catch performance regressions.
-  - Strengthen communication between development and operations teams to ensure awareness of upcoming changes.
+  - Taught our database some yoga to optimize those queries.
+  - Enlisted an AI bouncer for automated testing of database schema changes, so we can catch those party crashers.
+  - Set up a hotline between the development and operations teams to prevent future surprises.
 - **Tasks to Address Issue:**
-  - Revisit and optimize database schema design to prevent future performance bottlenecks.
-  - Implement continuous monitoring for CPU usage, response times, and database performance metrics.
-  - Establish and enforce a rigorous code review process for critical system updates.
-  - Define clear rollback procedures for emergency situations.
+  - Gave our database a makeover, ensuring it's always dressed to impress without the excess baggage.
+  - Put our system on a treadmill with continuous monitoring for CPU usage, response times, and overall performance.
+  - Decreed a strict dress code for code—no messy updates allowed without a thorough review.
+  - Installed emergency exits with clear instructions for rollback in case our system decides to throw another tantrum.
+
 
 This incident underscored the significance of robust testing and vigilant monitoring during system updates. The root cause analysis underscored the importance of optimized database queries and strong collaboration between development and operations teams.
 
