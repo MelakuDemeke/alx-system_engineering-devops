@@ -5,3 +5,4 @@ school
 school.pub
 copyfiletoserver
 test
+__pycache__
