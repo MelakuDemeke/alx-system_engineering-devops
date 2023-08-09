@@ -7,3 +7,4 @@ copyfiletoserver
 test
 __pycache__
 curl.txt
+dashboard.sh
