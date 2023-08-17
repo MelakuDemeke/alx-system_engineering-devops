@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Script for gracefully reloading Gunicorn
+
+pids=$(pgrep gunicorn)
+for pid in $pids; do
+    kill -HUP "$pid"
+done
