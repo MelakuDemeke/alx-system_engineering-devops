@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-# Script for gracefully reloading Gunicorn
+# Gracefully reloads Gunicorn.
 
-pids=$(pgrep gunicorn)
-for pid in $pids; do
-    kill -HUP "$pid"
-done
+ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
