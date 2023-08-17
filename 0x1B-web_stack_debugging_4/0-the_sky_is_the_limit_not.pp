@@ -1,17 +1,15 @@
 # Fix problem of high amount of requests
-# Define ulimit value and service name
-$ulimit_value = '4096'
-$service_name = 'nginx'
 
-# Update ulimit value
-file { '/etc/default/nginx':
-  ensure  => file,
-  content => "ULIMIT=\"-n $ulimit_value\"\n",
-  notify  => Exec['restart_service'],
+# Define an 'exec' resource named 'replace' to use the shell provider.
+# This resource runs a command to replace the ulimit value in the nginx configuration file.
+exec {'replace':
+  provider => shell,
+  command  => 'sudo sed -i "s/ULIMIT=\"-n 15\"/ULIMIT=\"-n 4096\"/" /etc/default/nginx',
+  before   => Exec['restart'],
 }
 
-# Restart the service when ulimit is updated
-exec { 'restart_service':
-  command     => "sudo service $service_name restart",
-  refreshonly => true,
+# Define another 'exec' resource named 'restart' to restart the nginx service.
+exec {'restart':
+  provider => shell,
+  command  => 'sudo service nginx restart',
 }
